@@ -1,23 +1,31 @@
+from instagram.models import Instagram_Apı_Constants
+instagram_api_constants = Instagram_Apı_Constants.objects.filter()
+if len(instagram_api_constants) == 0:
+    new_constants = Instagram_Apı_Constants()
+    new_constants.save()
+instagram_api_constants = Instagram_Apı_Constants.objects.filter()[0]
+
+
 
 class Constants(object):
     """Constants holder class that stores the bulk of the fixed strings used in the library."""
 
-    IG_SIG_KEY = '19ce5f445dbfd9d29c59dc2a78c616a7fc090a8e018b9267bc4240a30244c53b'
-    IG_CAPABILITIES = '3brTvw=='
-    SIG_KEY_VERSION = '4'
-    APP_VERSION = '76.0.0.15.395'
-    APPLICATION_ID = '567067343352427'
-    FB_HTTP_ENGINE = 'Liger'
+    IG_SIG_KEY = instagram_api_constants.ig_sig_key    
+    IG_CAPABILITIES = instagram_api_constants.ig_capabilites  
+    SIG_KEY_VERSION = instagram_api_constants.sig_key_version
+    APP_VERSION = instagram_api_constants.app_version
+    APPLICATION_ID = instagram_api_constants.application_id
+    FB_HTTP_ENGINE = instagram_api_constants.fb_http_engine
 
-    ANDROID_VERSION = 24
-    ANDROID_RELEASE = '7.0'
-    PHONE_MANUFACTURER = 'samsung'
-    PHONE_DEVICE = 'SM-G930F'
-    PHONE_MODEL = 'herolte'
-    PHONE_DPI = '640dpi'
-    PHONE_RESOLUTION = '1440x2560'
-    PHONE_CHIPSET = 'samsungexynos8890'
-    VERSION_CODE = '138226743'
+    ANDROID_VERSION = instagram_api_constants.android_version
+    ANDROID_RELEASE = instagram_api_constants.android_relase
+    PHONE_MANUFACTURER = instagram_api_constants.phone_manufacturer
+    PHONE_DEVICE = instagram_api_constants.phone_device
+    PHONE_MODEL = instagram_api_constants.phone_model
+    PHONE_DPI = instagram_api_constants.phone_dpi
+    PHONE_RESOLUTION = instagram_api_constants.phone_resolution
+    PHONE_CHIPSET = instagram_api_constants.phone_chipset
+    VERSION_CODE = instagram_api_constants.version_code
 
     USER_AGENT_FORMAT = \
         'Instagram {app_version} Android ({android_version:d}/{android_release}; ' \
