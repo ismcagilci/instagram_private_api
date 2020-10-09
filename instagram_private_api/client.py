@@ -234,20 +234,20 @@ class Client(AccountsEndpointsMixin, DiscoverEndpointsMixin, FeedEndpointsMixin,
     @user_agent.setter
     def user_agent(self, value):
         """Override the useragent string with your own"""
-        mobj = re.search(Constants.USER_AGENT_EXPRESSION, value)
-        if not mobj:
-            raise ValueError('User-agent specified does not fit format required: {0!s}'.format(
-                Constants.USER_AGENT_EXPRESSION))
-        self.app_version = mobj.group('app_version')
-        self.android_release = mobj.group('android_release')
-        self.android_version = int(mobj.group('android_version'))
-        self.phone_manufacturer = mobj.group('manufacturer')
-        self.phone_device = mobj.group('device')
-        self.phone_model = mobj.group('model')
-        self.phone_dpi = mobj.group('dpi')
-        self.phone_resolution = mobj.group('resolution')
-        self.phone_chipset = mobj.group('chipset')
-        self.version_code = mobj.group('version_code')
+        # mobj = re.search(Constants.USER_AGENT_EXPRESSION, value)
+        # if not mobj:
+        #     raise ValueError('User-agent specified does not fit format required: {0!s}'.format(
+        #         Constants.USER_AGENT_EXPRESSION))
+        self.app_version = value.get('app_version')
+        self.android_release = value.get('android_release')
+        self.android_version = int(value.get('android_version'))
+        self.phone_manufacturer = value.get('manufacturer')
+        self.phone_device = value.get('device')
+        self.phone_model = value.get('model')
+        self.phone_dpi = value.get('dpi')
+        self.phone_resolution = value.get('resolution')
+        self.phone_chipset = value.get('chipset')
+        self.version_code = value.get('version_code')
 
     @staticmethod
     def generate_useragent(**kwargs):
